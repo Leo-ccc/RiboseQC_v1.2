@@ -2535,7 +2535,7 @@ prepare_annotation_files<-function(annotation_directory,twobit_file=NULL,gtf_fil
 
 
         circseed<-circss
-        if(length(circseed)==0){circseed<-NULL}
+        if(length(circseed)==0){circseed<-character(0)}
 
         pkgnm<-paste("BSgenome",scientific_name,annotation_name,sep=".")
 
@@ -2562,7 +2562,8 @@ prepare_annotation_files<-function(annotation_directory,twobit_file=NULL,gtf_fil
 
 
         if(length(circseed)==0){
-            writeLines(text = seed_text,con = seed_dest)
+          seed_text<-paste(seed_text,"\n",
+                           "circ_seqs: ",character(0),sep="")
         }
 
         if(length(circseed)==1){
